@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .header {
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .card {
+            margin-bottom: 1.5rem;
+        }
+        .pipeline-step {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+        }
+        .pipeline-step.active {
+            background-color: #e9ecef;
+            border-left: 4px solid #0d6efd;
+        }
+        .pipeline-step.completed {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+        }
+        .pipeline-step.failed {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unified</h1>
+            <p class="lead">AI Voice Interview System with Integrated Content Pipeline</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Interview Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="interview-form">
+                            <div class="mb-3">
+                                <label for="clientName" class="form-label">Client Name</label>
+                                <input type="text" class="form-control" id="clientName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientEmail" class="form-label">Client Email</label>
+                                <input type="email" class="form-control" id="clientEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clientPhone" class="form-label">Client Phone</label>
+                                <input type="tel" class="form-control" id="clientPhone" placeholder="+1234567890">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Interview</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Upload Files</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="upload-form">
+                            <div class="mb-3">
+                                <label for="clientId" class="form-label">Client ID</label>
+                                <input type="text" class="form-control" id="clientId" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fileType" class="form-label">File Type</label>
+                                <select class="form-select" id="fileType">
+                                    <option value="video">Video</option>
+                                    <option value="audio">Audio</option>
+                                    <option value="subtitle">Subtitle (VTT)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="file" class="form-label">File</label>
+                                <input type="file" class="form-control" id="file" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Processing Pipeline</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="pipeline-step" id="step-interview">
+                            <h5>1. Interview</h5>
+                            <p>Conduct an AI voice interview or upload files</p>
+                            <div class="progress" style="display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="pipeline-step" id="step-transcript">
+                            <h5>2. Transcript Processing</h5>
+                            <p>Process interview into structured chunks</p>
+                            <div class="progress" style="display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="pipeline-step" id="step-style">
+                            <h5>3. Style Profiling</h5>
+                            <p>Analyze transcript for style elements</p>
+                            <div class="progress" style="display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="pipeline-step" id="step-content">
+                            <h5>4. Content Generation</h5>
+                            <p>Generate website content and social media</p>
+                            <div class="progress" style="display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="results">
+                            <p class="text-muted">No results yet. Start the pipeline to generate content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('interview-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const clientName = document.getElementById('clientName').value;
+            const clientEmail = document.getElementById('clientEmail').value;
+            const clientPhone = document.getElementById('clientPhone').value;
+            
+            // Simulate API call
+            fetch('/api/interviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    clientName,
+                    clientEmail,
+                    clientPhone
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Interview created! Client ID: ${data.clientId}`);
+                simulatePipeline();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to create interview. See console for details.');
+            });
+        });
+
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const clientId = document.getElementById('clientId').value;
+            const fileType = document.getElementById('fileType').value;
+            const file = document.getElementById('file').files[0];
+            
+            // Simulate API call
+            alert(`File uploaded for client ${clientId}! Processing will begin shortly.`);
+            simulatePipeline();
+        });
+
+        function simulatePipeline() {
+            // Reset pipeline
+            document.querySelectorAll('.pipeline-step').forEach(step => {
+                step.classList.remove('active', 'completed', 'failed');
+                step.querySelector('.progress').style.display = 'none';
+            });
+            
+            // Simulate interview step
+            const interviewStep = document.getElementById('step-interview');
+            interviewStep.classList.add('active');
+            const interviewProgress = interviewStep.querySelector('.progress');
+            interviewProgress.style.display = 'block';
+            
+            simulateProgress(interviewProgress.querySelector('.progress-bar'), 100, () => {
+                interviewStep.classList.remove('active');
+                interviewStep.classList.add('completed');
+                
+                // Simulate transcript step
+                const transcriptStep = document.getElementById('step-transcript');
+                transcriptStep.classList.add('active');
+                const transcriptProgress = transcriptStep.querySelector('.progress');
+                transcriptProgress.style.display = 'block';
+                
+                simulateProgress(transcriptProgress.querySelector('.progress-bar'), 100, () => {
+                    transcriptStep.classList.remove('active');
+                    transcriptStep.classList.add('completed');
+                    
+                    // Simulate style step
+                    const styleStep = document.getElementById('step-style');
+                    styleStep.classList.add('active');
+                    const styleProgress = styleStep.querySelector('.progress');
+                    styleProgress.style.display = 'block';
+                    
+                    simulateProgress(styleProgress.querySelector('.progress-bar'), 100, () => {
+                        styleStep.classList.remove('active');
+                        styleStep.classList.add('completed');
+                        
+                        // Simulate content step
+                        const contentStep = document.getElementById('step-content');
+                        contentStep.classList.add('active');
+                        const contentProgress = contentStep.querySelector('.progress');
+                        contentProgress.style.display = 'block';
+                        
+                        simulateProgress(contentProgress.querySelector('.progress-bar'), 100, () => {
+                            contentStep.classList.remove('active');
+                            contentStep.classList.add('completed');
+                            
+                            // Show results
+                            document.getElementById('results').innerHTML = `
+                                <div class="alert alert-success">
+                                    <h4>Content Generation Complete!</h4>
+                                    <p>All steps of the pipeline have been completed successfully.</p>
+                                </div>
+                                <h5>Generated Content:</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Bio: Professional bio with authentic voice</li>
+                                    <li class="list-group-item">Blog Post: Engaging article on industry insights</li>
+                                    <li class="list-group-item">LinkedIn Posts: 2 professional updates</li>
+                                    <li class="list-group-item">Twitter/X Posts: 2 concise messages</li>
+                                    <li class="list-group-item">Instagram Posts: 2 visual descriptions with hashtags</li>
+                                    <li class="list-group-item">Facebook Posts: 2 conversational updates</li>
+                                </ul>
+                            `;
+                        });
+                    });
+                });
+            });
+        }
+
+        function simulateProgress(progressBar, target, callback) {
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= target) {
+                    clearInterval(interval);
+                    if (callback) callback();
+                } else {
+                    width += 5;
+                    progressBar.style.width = width + '%';
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>

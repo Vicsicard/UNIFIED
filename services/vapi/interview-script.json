@@ -1,0 +1,108 @@
+{
+  "name": "Self Cast Studios Brand Storytelling Interview",
+  "description": "AI-powered brand storytelling interview to capture authentic voice, values, and vision",
+  "model": "gpt-4",
+  "max_tokens": 500,
+  "temperature": 0.7,
+  "system_prompt": "You are an expert brand storytelling interviewer for Self Cast Studios. Your goal is to help clients share their authentic voice, values, and vision through thoughtful questions and follow-ups. Be warm, professional, and empathetic. Listen carefully to their responses and ask relevant follow-up questions to get deeper insights. Your interview will help create website content, blog posts, and social media content that truly represents their brand.",
+  "initial_message": "Hello! I'm your Self Cast Studios AI interviewer. Today, I'll be asking you questions about your background, expertise, values, and vision to help create authentic content for your brand. Feel free to take your time with each response, and don't worry about being perfect - just be yourself. Let's start with an easy one: Could you tell me about what you're currently focusing on in your business or practice?",
+  "questions": [
+    {
+      "text": "Tell me about what you're currently promoting or focusing on in your business.",
+      "follow_ups": [
+        "What specific services or products are you most excited about right now?",
+        "How does this current focus align with your overall mission?",
+        "What makes this offering particularly valuable to your clients?"
+      ]
+    },
+    {
+      "text": "Could you share a bit about your background and how you got to where you are today?",
+      "follow_ups": [
+        "What was your professional path before starting this business?",
+        "Were there any unexpected turns in your journey?",
+        "What skills from your past experience are most valuable in your current work?"
+      ]
+    },
+    {
+      "text": "What was the journey like that led you to this particular field or specialty?",
+      "follow_ups": [
+        "Was there a specific moment when you knew this was the right path for you?",
+        "What challenges did you face along the way?",
+        "How has your vision evolved since you first started?"
+      ]
+    },
+    {
+      "text": "Were there any pivotal moments or experiences that significantly shaped your path?",
+      "follow_ups": [
+        "How did that experience change your perspective?",
+        "What did you learn from that moment that you still carry with you?",
+        "How does that story influence how you work with clients today?"
+      ]
+    },
+    {
+      "text": "What makes your approach unique compared to others in your field?",
+      "follow_ups": [
+        "How would your clients describe your distinctive style or method?",
+        "What specific techniques or philosophies set you apart?",
+        "Is there a particular gap in the industry that your approach addresses?"
+      ]
+    },
+    {
+      "text": "Who are the people you typically work with, and what challenges do they face?",
+      "follow_ups": [
+        "What are the common pain points your clients experience before working with you?",
+        "How do you help them overcome these specific challenges?",
+        "Is there a particular type of client who benefits most from your approach?"
+      ]
+    },
+    {
+      "text": "Can you share a story about someone you've helped and the transformation they experienced?",
+      "follow_ups": [
+        "What was their situation before working with you?",
+        "What specific aspects of your work together made the biggest difference?",
+        "How did they describe the impact of the transformation in their own words?"
+      ]
+    },
+    {
+      "text": "What core values or beliefs guide your work?",
+      "follow_ups": [
+        "How do these values show up in your day-to-day interactions with clients?",
+        "Has there been a time when upholding these values was particularly challenging?",
+        "How do you ensure these values are reflected in every aspect of your business?"
+      ]
+    },
+    {
+      "text": "How would you describe your philosophy about your field?",
+      "follow_ups": [
+        "How has this philosophy evolved over time?",
+        "Are there any common industry practices you intentionally do differently?",
+        "How does this philosophy benefit your clients in tangible ways?"
+      ]
+    },
+    {
+      "text": "What are you most passionate about in your work?",
+      "follow_ups": [
+        "What aspects of your work energize you the most?",
+        "How do you maintain that passion when facing challenges?",
+        "How do you think clients feel that passion when working with you?"
+      ]
+    },
+    {
+      "text": "Where do you see yourself or your business going in the future?",
+      "follow_ups": [
+        "What new offerings or directions are you exploring?",
+        "What impact do you hope to have in your field over the next few years?",
+        "How are you preparing for that future vision now?"
+      ]
+    },
+    {
+      "text": "Is there anything we haven't covered that you feel is important to share?",
+      "follow_ups": [
+        "Is there a question I should have asked but didn't?",
+        "What else would help people understand your unique approach or offerings?",
+        "Is there a final message you'd like potential clients to know about working with you?"
+      ]
+    }
+  ],
+  "closing_message": "Thank you so much for sharing your story and insights with me today. You've provided wonderful material that will help create authentic content that truly represents your brand. The Self Cast Studios team will now process this interview and transform it into compelling website copy, blog posts, and social media content. You should receive your content drafts soon. Is there anything else you'd like to add before we wrap up?"
+}
