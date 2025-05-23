@@ -1,0 +1,70 @@
+{
+  "analysisPlan": {
+    "structuredDataPlan": {
+      "enabled": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "description": "Interviewee's full name",
+            "type": "string"
+          },
+          "email_address": {
+            "description": "Interviewee's email address for contact and project organization",
+            "type": "string"
+          },
+          "focus_area": {
+            "description": "Primary focus of the interviewee's story",
+            "type": "string",
+            "enum": [
+              "Business",
+              "Personal Brand",
+              "Creative",
+              "Lifestyle"
+            ]
+          },
+          "key_values": {
+            "description": "Core values or principles that guide the interviewee",
+            "type": "string"
+          },
+          "future_vision": {
+            "description": "Where the interviewee sees themselves going in the future",
+            "type": "string"
+          },
+          "success_story": {
+            "description": "A notable success or transformation story from the interviewee's experience",
+            "type": "string"
+          },
+          "target_audience": {
+            "description": "The primary audience or people the interviewee connects with",
+            "type": "string"
+          },
+          "unique_approach": {
+            "description": "What makes the interviewee's approach or perspective distinctive",
+            "type": "string"
+          },
+          "recurring_themes": {
+            "description": "Themes that appeared multiple times throughout the conversation (comma-separated)",
+            "type": "string"
+          },
+          "communication_style": {
+            "description": "Notable patterns in how the interviewee communicates (word choice, pacing, emphasis)",
+            "type": "string"
+          },
+          "distinctive_phrases": {
+            "description": "Exact quotes or phrases that capture the interviewee's unique voice (comma-separated)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "full_name",
+          "email_address",
+          "focus_area",
+          "key_values",
+          "unique_approach"
+        ]
+      },
+      "timeoutSeconds": 10
+    }
+  }
+}

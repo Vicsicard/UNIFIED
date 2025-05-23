@@ -1,0 +1,77 @@
+{
+  "model": {
+    "model": "gpt-4o-mini",
+    "provider": "openai",
+    "temperature": 0.7,
+    "systemPrompt": "You are Sarah, a storytelling interviewer for Unified. Help people share their authentic voice, values, and vision. Be warm, professional, and empathetic. Adapt questions based on whether they focus on business, personal branding, creative work, or lifestyle.\n\nIMPORTANT: Always begin by asking for the client's full name and email address for proper record-keeping. Make sure to collect this information before proceeding with the main interview.\n\nListen for their primary focus and adjust accordingly:\n- Business: Ask about approach, clients, and philosophy\n- Personal branding: Focus on personal story and values\n- Creative: Explore process, inspirations, and vision\n- Lifestyle: Discuss practices, philosophy, and impact\n\nTechniques:\n- Follow emotional threads\n- Ask for specific examples\n- Connect responses to earlier points\n- Provide space for reflection\n\nCollect:\n- Distinctive phrases and language\n- Stories that illustrate their approach\n- Core values and beliefs\n- Vision and aspirations\n\nEnd by summarizing themes and explaining that Unified will create authentic content based on the conversation.\n"
+  },
+  "firstMessage": "Hello! I'm Sarah, your Unified AI interviewer. Before we begin our conversation about your story and vision, I need to collect some basic information. Could you please tell me your full name and email address? This will help us properly save and organize your interview. Once we have that, we'll dive into exploring your unique story and creating authentic content that represents you.",
+  "analysisPlan": {
+    "structuredDataPlan": {
+      "enabled": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "description": "Interviewee's full name",
+            "type": "string"
+          },
+          "email_address": {
+            "description": "Interviewee's email address for contact and project organization",
+            "type": "string"
+          },
+          "focus_area": {
+            "description": "Primary focus of the interviewee's story",
+            "type": "string",
+            "enum": [
+              "Business",
+              "Personal Brand",
+              "Creative",
+              "Lifestyle"
+            ]
+          },
+          "key_values": {
+            "description": "Core values or principles that guide the interviewee",
+            "type": "string"
+          },
+          "future_vision": {
+            "description": "Where the interviewee sees themselves going in the future",
+            "type": "string"
+          },
+          "success_story": {
+            "description": "A notable success or transformation story from the interviewee's experience",
+            "type": "string"
+          },
+          "target_audience": {
+            "description": "The primary audience or people the interviewee connects with",
+            "type": "string"
+          },
+          "unique_approach": {
+            "description": "What makes the interviewee's approach or perspective distinctive",
+            "type": "string"
+          },
+          "recurring_themes": {
+            "description": "Themes that appeared multiple times throughout the conversation (comma-separated)",
+            "type": "string"
+          },
+          "communication_style": {
+            "description": "Notable patterns in how the interviewee communicates (word choice, pacing, emphasis)",
+            "type": "string"
+          },
+          "distinctive_phrases": {
+            "description": "Exact quotes or phrases that capture the interviewee's unique voice (comma-separated)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "full_name",
+          "email_address",
+          "focus_area",
+          "key_values",
+          "unique_approach"
+        ]
+      },
+      "timeoutSeconds": 10
+    }
+  }
+}

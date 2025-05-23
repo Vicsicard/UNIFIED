@@ -1,0 +1,17 @@
+{
+  "transcriber": {
+    "model": "nova-3",
+    "language": "en",
+    "provider": "deepgram",
+    "confidenceThreshold": 0.5
+  },
+  "artifactPlan": {
+    "transcriptPlan": {
+      "enabled": true,
+      "assistantName": "Sarah",
+      "userName": "Interviewee"
+    },
+    "recordingEnabled": true,
+    "recordingFormat": "wav;l16"
+  }
+}
